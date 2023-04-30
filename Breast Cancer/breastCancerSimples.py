@@ -51,3 +51,8 @@ classificador.compile(optimizer= "adam", loss= "binary_crossentropy", metrics= [
 #O parâmetro batch_size indica que a rede vai usar 10 registros para treinamento e só depois disso irá atualizar os pesos.
 #EPOCHS é a quantidade de vezes ou épocas que queremos relizar o treinamento, iremos começar com 100.
 classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 100)
+
+
+#Capturando dados de probabilidade 
+previsoes = classificador.predict(previsores_teste)
+previsoes = (previsoes > 0.5)
