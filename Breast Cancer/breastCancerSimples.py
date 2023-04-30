@@ -56,3 +56,14 @@ classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, e
 #Capturando dados de probabilidade 
 previsoes = classificador.predict(previsores_teste)
 previsoes = (previsoes > 0.5)
+
+
+#fazendo as comparações de dados
+from sklearn.metrics import confusion_matrix, accuracy_score
+#A variavel precisão irá comparar os valores das variaveis classe_teste e previsoes
+precisao = accuracy_score(classe_teste, previsoes) #O valor retornado aqui será o valor real de precisão da rede
+matriz = confusion_matrix(classe_teste, previsoes)
+
+
+#A mesma onfiguração de comparação de dados feito na linha 61-65, pode ser feita com o keras.
+resultado = classificador.evaluate(previsores_teste, classe_teste)
