@@ -35,6 +35,9 @@ classificador = Sequential()
 #input_dim = quantidade de entradas
 classificador.add(Dense(units = 16, activation= 'relu', kernel_initializer= 'random_uniform', input_dim= 30))
 
+#Criando mais uma camada oculta
+classificador.add(Dense(units = 16, activation= 'relu', kernel_initializer= 'random_uniform'))
+
 
 #Camada de saída
 classificador.add(Dense(units= 1, activation='sigmoid'))
@@ -50,7 +53,7 @@ classificador.compile(optimizer= "adam", loss= "binary_crossentropy", metrics= [
 #A função fit irá realizar o treinamento para aprender "encaixar" seus resultados de saída com os valores corretos
 #O parâmetro batch_size indica que a rede vai usar 10 registros para treinamento e só depois disso irá atualizar os pesos.
 #EPOCHS é a quantidade de vezes ou épocas que queremos relizar o treinamento, iremos começar com 100.
-classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 100)
+classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 1000)
 
 
 #Capturando dados de probabilidade 
