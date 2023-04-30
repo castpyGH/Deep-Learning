@@ -38,3 +38,9 @@ classificador.add(Dense(units = 16, activation= 'relu', kernel_initializer= 'ran
 
 #Camada de saída
 classificador.add(Dense(units= 1, activation='sigmoid'))
+
+#compilando a rede neural
+#Começando com o otimizador ADAM para a descida do gradiente estocástico, para seu caso ou para outros resultados, use outros.
+#Loos function é a forma como vamos fazer o cálculo do erro.
+#Nosso caso é de classificação binária, então vamos usar o binary_crossentropy na função loss
+classificador.compile(optimizer= "adam", loss= "binary_crossentropy", metrics= ["binary_accuracy"])
