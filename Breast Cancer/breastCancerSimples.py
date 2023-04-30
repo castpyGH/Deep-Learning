@@ -44,3 +44,10 @@ classificador.add(Dense(units= 1, activation='sigmoid'))
 #Loos function é a forma como vamos fazer o cálculo do erro.
 #Nosso caso é de classificação binária, então vamos usar o binary_crossentropy na função loss
 classificador.compile(optimizer= "adam", loss= "binary_crossentropy", metrics= ["binary_accuracy"])
+
+
+#Realizando o treinamento da rede neural
+#A função fit irá realizar o treinamento para aprender "encaixar" seus resultados de saída com os valores corretos
+#O parâmetro batch_size indica que a rede vai usar 10 registros para treinamento e só depois disso irá atualizar os pesos.
+#EPOCHS é a quantidade de vezes ou épocas que queremos relizar o treinamento, iremos começar com 100.
+classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 100)
