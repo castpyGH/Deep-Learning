@@ -60,6 +60,16 @@ classificador.compile(optimizer= otimizador, loss= "binary_crossentropy", metric
 classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 100)
 
 
+#Exibindo os pesos da ligação entre a camada de entrada (30 neuronios) com a priemira camada oculta (16 neuronios)
+pesos0 = classificador.layers[0].get_weights()
+print(pesos0)
+print(len(pesos0))
+#Exibindo os pesos da ligação entre a primeira camada oculta (16 neuronios) com a segunda camada oculta (16 neuronios)
+pesos1 = classificador.layers[1].get_weights()
+#Exibindo os pesos da ligação entre a segunda camada oculta (16 neuronios) com a camada de saída (1 neuronio)
+pesos2 = classificador.layers[2].get_weights()
+
+
 #Capturando dados de probabilidade 
 previsoes = classificador.predict(previsores_teste)
 previsoes = (previsoes > 0.5)
