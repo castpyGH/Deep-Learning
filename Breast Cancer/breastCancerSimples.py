@@ -42,18 +42,22 @@ classificador.add(Dense(units = 16, activation= 'relu', kernel_initializer= 'ran
 #Camada de saída
 classificador.add(Dense(units= 1, activation='sigmoid'))
 
+
 #compilando a rede neural
 #Começando com o otimizador ADAM para a descida do gradiente estocástico, para seu caso ou para outros resultados, use outros.
 #Loos function é a forma como vamos fazer o cálculo do erro.
 #Nosso caso é de classificação binária, então vamos usar o binary_crossentropy na função loss
-classificador.compile(optimizer= "adam", loss= "binary_crossentropy", metrics= ["binary_accuracy"])
+#classificador.compile(optimizer= "adam", loss= "binary_crossentropy", metrics= ["binary_accuracy"])
+#Configurando o otimizador
+otimizador = keras.optimizers.Adam(lr = 0.001, decay = 0.0001, clipvalue = 0.5)
+classificador.compile(optimizer= otimizador, loss= "binary_crossentropy", metrics= ["binary_accuracy"])
 
 
 #Realizando o treinamento da rede neural
 #A função fit irá realizar o treinamento para aprender "encaixar" seus resultados de saída com os valores corretos
 #O parâmetro batch_size indica que a rede vai usar 10 registros para treinamento e só depois disso irá atualizar os pesos.
 #EPOCHS é a quantidade de vezes ou épocas que queremos relizar o treinamento, iremos começar com 100.
-classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 1000)
+classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 100)
 
 
 #Capturando dados de probabilidade 
