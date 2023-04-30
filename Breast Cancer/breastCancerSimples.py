@@ -65,5 +65,5 @@ precisao = accuracy_score(classe_teste, previsoes) #O valor retornado aqui será
 matriz = confusion_matrix(classe_teste, previsoes)
 
 
-#A mesma onfiguração de comparação de dados feito na linha 61-65, pode ser feita com o keras.
+#A mesma configuração de comparação de dados feito na linha 61-65, pode ser feita com o keras.
 resultado = classificador.evaluate(previsores_teste, classe_teste)
